@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+  	"react": "0.13.1",
+    "marked": "0.3.2"
+  },
+  "devDependencies": {
+    "browserify": "9.0.8",
+    "reactify": "1.1.0"
+  }
+}
