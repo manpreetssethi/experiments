@@ -14,6 +14,9 @@ var AppBox = React.createClass({
 				this.handleErrorInSearch
 			);
   	},
+  	handleReset: function() {
+  		this.replaceState({data: [], searching: false});
+  	},
   	handleSearchResults: function(results) {
 		if(typeof results.tracks == 'undefined') {
 			this.replaceState({data: [], searching: false});

@@ -11,7 +11,7 @@ var MaterialForm = React.createClass({
   render: function() {
     return (
       <form className="materialForm" onSubmit={this.handleSubmit}>
-          <MaterialTextInput label="Search for a track.." icon="mdi-action-search" name="q" ref="q" />
+          <MaterialTextInput label="Search" icon="mdi-action-search" name="q" ref="q" />
       </form>
     );
   }

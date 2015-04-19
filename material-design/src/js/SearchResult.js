@@ -25,13 +25,8 @@ var SearchResult = React.createClass({
       artist.name = this.props.data.artists[0].name;
     }
 
-    var name = this.props.data.name;
-    if(name.length > 15) {
-      name = name.substr(0, 13)+'..';
-    }
-
     this.setState({data: {
-      name: name,
+      name: this.props.data.name,
       uri: this.props.data.uri,
       image: image,
       artist: artist
