@@ -8,7 +8,7 @@ var SearchResults = React.createClass({
     }
     return (
       <div className="searchResults">
-        <ReactCSSTransitionGroup transitionName="example">
+        <ReactCSSTransitionGroup transitionName="fade">
           {resultNodes}
         </ReactCSSTransitionGroup>
       </div>
