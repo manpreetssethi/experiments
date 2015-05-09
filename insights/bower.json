@@ -1,0 +1,23 @@
+{
+  "name": "Insights",
+  "version": "0.0.0",
+  "homepage": "https://github.com/manpreetssethi/experiments/insights",
+  "authors": [
+    "Manpreet Singh <manpreet@digined.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "materialize": "~0.96.1",
+    "bower": "*",
+    "c3": "~0.4.10"
+  }
+}

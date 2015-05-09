@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insights - Experiments</title>
+		<meta name="author" content="Manpreet Sethi">
+		<meta name="description" content="randomness">
+		<meta name="keywords" content="insights, facebook, experiments">
+
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="vendor/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+
+		<!-- Import c3.css -->
+		<link type="text/css" rel="stylesheet" href="vendor/c3/c3.min.css" />
+
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+		<link href='http://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>
+
+		<link type="text/css" rel="stylesheet" href="src/css/styles.css"  media="screen,projection"/>
+	</head>
+	<body>
+		<div class="container">
+			<div id="app">
+				<div class="appBox">
+					<div class="row">
+						<div class="col s9">
+							<div id="nps" class="section scrollspy">
+								<div id="chart-4" class="chart-container"></div>
+							</div>
+							<div class="divider"></div>
+
+							<div id="users" class="section scrollspy">
+								<div id="chart-1" class="chart-container"></div>
+							</div>
+							<div class="divider"></div>
+
+							<div id="logins" class="section scrollspy">								
+								<div id="chart-2" class="chart-container"></div>
+							</div>
+							<div class="divider"></div>
+
+							<div id="users-by-gender" class="section scrollspy">
+								<div class="row">
+									<div class="col s12">
+										<div class="right">
+											<input name="chart-type" id="chart5-total-type" type="radio" rel="#chart-5" value="pie" checked />
+											<label for="chart5-total-type">Total</label>
+
+											<input name="chart-type" id="chart5-daily-type" type="radio" rel="#chart-5" value="bar" />
+											<label for="chart5-daily-type">Daily</label>
+										</div>
+									</div>
+
+									<div class="col s12">
+										<div id="chart-5" class="chart-container" style="margin-top: 20px;"></div>
+									</div>
+								</div>
+							</div>
+							<div class="divider"></div>
+						</div>
+
+						<div class="col s3">
+							<ul class="section table-of-contents">
+								<li><a href="#nps">NPS</a></li>
+								<li><a href="#users">Users</a></li>
+								<li><a href="#logins">Logins</a></li>
+								<li><a href="#users-by-gender">User (by gender)</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="vendor/materialize/dist/js/materialize.min.js"></script>
+		
+		<!-- d3 -->
+		<script type="text/javascript" src="vendor/d3/d3.min.js"></script>
+
+		<!-- Charting library -->
+		<script type="text/javascript" src="vendor/c3/c3.js"></script>
+
+		<!-- Chart components -->
+		<script type="text/javascript" src="src/js/libraries/Chart.js"></script>
+
+		<!-- Data -->
+		<script type="text/javascript" src="src/js/chartsData.js"></script>
+
+		<script type="text/javascript" src="src/js/App.js"></script>
+
+		<script>
+			$(document).ready(function(){
+				// Initiate App
+				window.app = new App();
+			});
+		</script>
+	</body>
+</html>
