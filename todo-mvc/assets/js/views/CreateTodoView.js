@@ -40,22 +40,17 @@ define(
 
             saveTodo: function(title) {
                 if(typeof title === 'undefined') {
-                    this.showValidationError('Provide a title!');
+                    this.showErrorMessage('Provide a title!');
                 }
 
                 if(!this.collection.create({title: title}, {wait: true}).isValid()) {
-                    this.showValidationError('Provide a title!');
+                    this.showErrorMessage('Provide a title!');
                     return this;
                 }
 
                 this.resetForm();
                 
                 return this;
-            },
-
-            showValidationError: function(msg) {
-                alert(msg);
-                return this
             },
 
             resetForm: function() {

@@ -28,6 +28,11 @@ define(
                 }
 
                 this.render();
+
+                // just incase there's an error :s
+                this.listenTo(this.model.get('todosCollection'), 'error', function(){
+                    this.showErrorMessage('An unknown error occurred!');
+                });
             },
 
             render: function() {

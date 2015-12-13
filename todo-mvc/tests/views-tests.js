@@ -153,14 +153,14 @@ define(
             })
 
             it('should show a validation error if empty title provided', function(){
-                this.showValidationError_stub = sinon.stub(this.createTodoView, 'showValidationError');
+                this.showValidationError_stub = sinon.stub(this.createTodoView, 'showErrorMessage');
                 this.createTodoView.saveTodo('');
                 should.equal(this.showValidationError_stub.calledOnce, true);
                 this.showValidationError_stub.restore();
             })
 
             it('should show a validation error if an undefined title provided', function(){
-                this.showValidationError_stub = sinon.stub(this.createTodoView, 'showValidationError');
+                this.showValidationError_stub = sinon.stub(this.createTodoView, 'showErrorMessage');
                 this.createTodoView.saveTodo(undefined);
                 should.equal(this.showValidationError_stub.calledOnce, true);
                 this.showValidationError_stub.restore();

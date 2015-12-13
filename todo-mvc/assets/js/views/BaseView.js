@@ -8,6 +8,11 @@ define('todomvc/views/BaseView', ['backbone'], function(Backbone){
             Backbone.View.prototype.initialize.call(this, options);
         },
 
+        showErrorMessage: function(msg) {
+            alert(msg);
+            return this
+        },
+
         close: function() {
             this.unbind().remove();
         }
