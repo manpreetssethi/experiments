@@ -1,0 +1,15 @@
+{
+  "name": "podlists",
+  "version": "1.0.0",
+  "description": "An app to manage podcasts playlists using audiosear.ch API",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manpreet Singh Sethi",
+  "dependencies": {
+    "audiosearch-client-node": "git://github.com/popuparchive/audiosearch-client-node.git",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "firebase": "^2.3.2"
+  }
+}

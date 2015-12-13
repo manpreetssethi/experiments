@@ -1,0 +1,36 @@
+{
+  "name": "podlists",
+  "description": "An app to manage podcasts playlists using audiosear.ch API",
+  "main": "assets/js/main.js",
+  "authors": [
+    "Manpreet Singh Sethi"
+  ],
+  "homepage": "https://github.com/manpreetssethi/experiments",
+  "moduleType": [
+    "amd"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.3",
+    "underscore": "~1.8.3",
+    "backbonefire": "~0.5.1",
+    "requirejs": "~2.1.22",
+    "firebase": "~2.3.2"
+  },
+  "devDependencies": {
+    "chai": "~3.4.2",
+    "chai-backbone": "~0.9.4",
+    "mocha": "~2.3.4",
+    "sinonjs": "~1.17.1"
+  },
+  "resolutions": {
+    "firebase": "2.0.x"
+  }
+}

@@ -1,0 +1,53 @@
+.app-container {
+    margin: 50px 0px 0px 0px;
+}
+
+.ac-content {
+    position: relative;
+}
+
+
+/* Search Results */
+.search-podcasts-view-container {
+    /*padding: 22px 0px;*/
+    position: absolute;
+    width: 100%;
+    top: 0px;
+}
+
+.search-podcasts-view-container input[name="q"] {
+    width: 200px;
+    transition: width 0.4s ease-out;
+    padding: 5px 5px;
+}
+.search-podcasts-view-container input[name="q"]:focus {
+    width: 300px;
+}
+/* Search Results */
+
+
+/* Playlist Podcasts */
+.ac-c-playlist-podcasts-list {
+}
+.ac-c-playlist-podcasts-list .playlists-podcasts-view-container {
+    width: 100%;
+    position: absolute;
+    top: -51px;
+    background: #f1f1f1;
+    padding: 45px 20px;
+    min-height: 100vh;
+}
+.ppsvc-title {
+    margin-bottom: 30px;
+}
+.ppsvc-close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.playlist-podcast-view-container {
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.1);
+    padding: 15px 0px;
+    margin-bottom: 10px;
+}
+/* Playlist Podcasts */

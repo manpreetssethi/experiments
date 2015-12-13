@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tests - Podlists</title>
+
+    <!-- Mocha -->
+    <link rel="stylesheet" href="bower_components/mocha/mocha.css">
+    <!-- Mocha -->
+</head>
+<body>
+
+    <div id="mocha"></div>
+
+    <!-- RequireJS -->
+    <script src="bower_components/requirejs/require.js"></script>
+    <script src="assets/js/config.js"></script>
+    <!-- RequireJS -->
+
+    <script type="text/javascript">
+        require(['mocha', 'chai', 'chai-backbone', 'sinon'], function(mocha, chai, chaiBackbone, sinon){
+
+            mocha.setup('bdd');
+
+            require(
+                [
+                    'tests/app-tests',
+                    'tests/views-tests',
+                    'tests/models-tests',
+                ],
+                function() {
+                    mocha.run();
+                }
+            );
+        });
+    </script>
+
+    <script type="text/javascript">
+//        mocha.checkLeaks();
+//        mocha.globals(['jQuery']);
+//        mocha.run();
+    </script>
+
+</body>
+</html>

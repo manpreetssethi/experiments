@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Podlists</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+    <div class="container">
+
+        <div id="app" class="app-container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="ac-header"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="ac-content">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-3">
+                                <h5>Playlists</h5>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ac-c-playlists-list"><p>Loading..</p></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ac-c-create-playlist-form">
+                                            <h5>New Playlist</h5>
+                                            <form>
+                                                <input type="text" autocomplete="off" name="playlist-name" value="" placeholder="Enter playlist name.." />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-9">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="ac-c-search-podcasts-form">
+                                            <div class="search-podcasts-view-container">
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <div class="pull-right"><form><input type="text" autocomplete="off" name="q" placeholder="search for a podcast.." /></form></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <div class="spvc-request-feedback hide"><h5>Searching..</h5></div>
+                                                        <div class="spvc-error-feedback hide"><h5>There was an error, try again perhaps?</h5></div>
+                                                        <div class="spvc-results-list"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ac-c-playlist-podcasts-list"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="ac-footer"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Templates -->
+    <script type="text/template" id="playlist-podcasts-template">
+        <h4 class="ppsvc-title">Viewing podcasts in "<%=name%>"</h4>
+        <a href="#" class="ppsvc-close-btn">close</a>
+    </script>
+    <script type="text/template" id="podcast-view-template">
+        <div class="row">
+            <div class="col-xs-12 col-md-2"><img src="<%=thumbImage%>" /></div>
+            <div class="col-xs-12 col-md-6">
+                <h4><%=title%></h4>
+                <h6><%=tags%></h6>
+                <p><%=title%></p>
+            </div>
+        </div>
+    </script>
+    <script type="text/template" id="podcast-search-result-view-template">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pull-right">
+                    <button class="btn psrvc-add-to-playlist-btn">add to playlists</button>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/template" id="add-podcast-to-playlists-view-template">
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Add Podcast to Playlists</h4>
+                </div>
+                <div class="modal-content">
+                    <div class="aptpvc-playlists"></div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/template" id="add-podcast-to-playlist-view-template">
+        <div class="row">
+            <div class="col-xs-12 col-md-8"><h3><%=model.name%></h3></div>
+            <div class="col-xs-12 col-md-4">
+                <%if(addButtonIsDisabled){%>
+                    <button name="aptpvc-add-to-playlist" disabled>added</button>
+                <%}else{%>
+                    <button name="aptpvc-add-to-playlist">add</button>
+                <%}%>
+            </div>
+        </div>
+    </script>
+    <!-- Templates -->
+
+    <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
+    <script type="text/javascript" src="assets/js/config.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+</body>
+</html>
