@@ -3,11 +3,11 @@
  */
 define(
     [
-        'podlists/app/App',
+        'podlists/app/podlistsApp',
         'backbone'
     ],
     function(
-        App,
+        podlistsApp,
         Backbone
     ){
         var should = require('chai').should();
@@ -16,12 +16,8 @@ define(
 
         describe('App', function() {
             beforeEach(function() {
-                this.app = new App({});
+                this.app = podlistsApp;
             });
-
-            it('should have a property "options" assigned with the first argument in the contstructor', function(){
-                expect(this.app.options).to.eql({});
-            })
 
             it('should start backbone history when startHistory is called', function(){
                 this.historyStartStub = sinon.stub(Backbone.history, 'start');

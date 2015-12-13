@@ -152,13 +152,6 @@ define(
                 should.equal(this.createTodoView.$el.find('input[name="todo-title"]').val(), '');
             })
 
-            it('should show a validation error if empty title provided', function(){
-                this.showValidationError_stub = sinon.stub(this.createTodoView, 'showErrorMessage');
-                this.createTodoView.saveTodo('');
-                should.equal(this.showValidationError_stub.calledOnce, true);
-                this.showValidationError_stub.restore();
-            })
-
             it('should show a validation error if an undefined title provided', function(){
                 this.showValidationError_stub = sinon.stub(this.createTodoView, 'showErrorMessage');
                 this.createTodoView.saveTodo(undefined);

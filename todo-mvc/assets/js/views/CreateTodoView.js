@@ -43,7 +43,9 @@ define(
                     this.showErrorMessage('Provide a title!');
                 }
 
-                if(!this.collection.create({title: title}, {wait: true}).isValid()) {
+                var model = this.collection.create({title: title}, {wait: true});
+
+                if(typeof model === 'object' && !model.isValid()) {
                     this.showErrorMessage('Provide a title!');
                     return this;
                 }

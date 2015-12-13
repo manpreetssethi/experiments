@@ -25,8 +25,11 @@ define(
             });
 
             it('Should parse data from server', function () {
-                var _json = _.first(this.todosCollection.toJSON());
-                expect(_json).to.not.equal({id: '-K5Pv8x8XkTsstybHRx6', title: 'buy eggs', createdAt: 1450003177363, completed: true});
+                var _json = _.last(this.todosCollection.toJSON());
+                expect(_json.id).to.equal('-K5Pv8x8XkTsstybHRx6');
+                expect(_json.title).to.equal('buy eggs');
+                expect(_json.createdAt).to.equal(1450003177363);
+                expect(_json.completed).to.equal(true);
             });
         });
     }
