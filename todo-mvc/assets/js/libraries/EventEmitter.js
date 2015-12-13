@@ -2,7 +2,7 @@
  * Created by manpreet on 12/12/15.
  */
 define(
-    'podlists/libraries/EventEmitter',
+    'todomvc/libraries/EventEmitter',
     [
         'backbone'
     ],

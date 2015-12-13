@@ -1,0 +1,10 @@
+<div class="input-group <%=completed ? 'completed' : ''%>">
+    <input disabled type="text" value="<%=_.escape(title)%>" class="form-control" aria-label="<%=_.escape(title)%>">
+    <span class="input-group-addon">
+        <%if(completed === true){%>
+            <input type="checkbox" name="completed" checked title="mark as pending" aria-label="mark as pending">
+        <%}else{%>
+            <input type="checkbox" name="completed" title="mark as done" aria-label="mark as done">
+        <%}%>
+    </span>
+</div>

@@ -3,40 +3,30 @@
  */
 require(
     [
-        'podlists/app/podlistsApp',
-        'podlists/app/AppRouter',
-        'podlists/models/AppDataModel',
-        'podlists/collections/PlaylistsCollection',
-        'podlists/views/AppView',
-        'podlists/libraries/EventEmitter'
+        'todomvc/app/todoMVCApp',
+        'todomvc/models/AppDataModel',
+        'todomvc/collections/TodosCollection',
+        'todomvc/views/AppView',
+        'todomvc/libraries/EventEmitter'
     ],
     function(
-        podlistsApp,
-        AppRouter,
+        todoMVCApp,
         AppDataModel,
-        PlaylistsCollection,
+        TodosCollection,
         AppView,
         EventEmitter
     ){
         var _data = new AppDataModel({
-            playlistsCollection: new PlaylistsCollection(),
+            todosCollection: new TodosCollection(),
             podcastsCollection: null,
             audioPlayerModel: null,
             userModel: null
         });
 
-        podlistsApp.data        = _data;
-        podlistsApp.eventBus    = new EventEmitter();
-        podlistsApp.router      = new AppRouter();
-        podlistsApp.view        = new AppView({el: $('.app-container'), model: _data});
+        todoMVCApp.data        = _data;
+        todoMVCApp.eventBus    = new EventEmitter();
+        todoMVCApp.view        = new AppView({model: _data});
 
-
-        // fetch playlists and start the history
-        var playlistsCollection = podlistsApp.data.get('playlistsCollection');
-        playlistsCollection.fetch({
-            success: function() {
-                podlistsApp.startHistory();
-            }
-        })
+        $('.container').html(todoMVCApp.view.el);
     }
 );

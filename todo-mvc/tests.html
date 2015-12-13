@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tests - Podlists</title>
+    <title>Tests - Todos</title>
 
     <!-- Mocha -->
     <link rel="stylesheet" href="bower_components/mocha/mocha.css">
@@ -11,6 +11,8 @@
 <body>
 
     <div id="mocha"></div>
+
+    <div id="fixtures" style="display: none;"></div>
 
     <!-- RequireJS -->
     <script src="bower_components/requirejs/require.js"></script>
@@ -24,21 +26,15 @@
 
             require(
                 [
-                    'tests/app-tests',
                     'tests/views-tests',
                     'tests/models-tests',
+                    'tests/collections-tests',
                 ],
                 function() {
                     mocha.run();
                 }
             );
         });
-    </script>
-
-    <script type="text/javascript">
-//        mocha.checkLeaks();
-//        mocha.globals(['jQuery']);
-//        mocha.run();
     </script>
 
 </body>

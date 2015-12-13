@@ -1,15 +1,11 @@
 /**
  * Created by manpreet on 12/12/15.
  */
-define('podlists/helpers/apiEndpoints.config', function(){
+define('todomvc/helpers/api.config', function(){
     var _base = '//experiments.local:3000/api';
     return {
-        playlists: {
-            all: _base+'/playlists'
-        },
-        podcasts: {
-            all: _base+'/podcasts',
-            search: _base+'/podcasts/search',
+        todos: {
+            all: _base+'/todos'
         }
     };
 });

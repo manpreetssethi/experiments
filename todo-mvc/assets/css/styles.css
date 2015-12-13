@@ -6,48 +6,66 @@
     position: relative;
 }
 
+/* Create Todo */
+    .ac-c-create-todo-form {
+        position: fixed;
+        top: 0px;
+        width: 750px;
+        z-index: 999;
+        height: 50px;
+        padding: 40px 0px;
+        background: #fff;
+    }
+    .ac-c-create-todo-form form input[type="text"] {
+        width: 100%;
+        border: none;
+        border-bottom: solid #dddddd 2px;
+        font-size: 20px;
+        padding: 15px 0px;
+        font-weight: 300;
+    }
+    .ac-c-create-todo-form form input[type="text"]:focus {
+        outline: none;
+    }
+/* Create Todo */
 
-/* Search Results */
-.search-podcasts-view-container {
-    /*padding: 22px 0px;*/
-    position: absolute;
-    width: 100%;
-    top: 0px;
-}
+/* Todos List */
+    .ac-c-todos-list {
+        width: 100%;
+        margin-top: 100px;
+    }
+    .ac-c-tl-loading-feedback {
+        width: 100%;
+        line-height: 150px;
+        font-size: 30px;
+        text-align: center;
+        font-weight: 300;
+        color: #dddddd;
+    }
+    .ac-c-todos-list ul {
+        list-style: none;
+        margin: 0px 0px;
+        padding: 0px 0px;
+    }
+    .ac-c-todos-list ul li {
+        margin-bottom: 10px
+    }
+    .ac-c-todos-list ul li .input-group.completed input[type="text"] {
+        text-decoration: line-through;
+        color: #ddd;
+    }
+    .ac-c-todos-list ul li input[type="text"] {
+        border-radius: 0;
+        box-shadow: none;
+        height: 55px;
+        border: none;
+        color: #505050;
+    }
+    .ac-c-todos-list ul li input[type="text"]:disabled {
 
-.search-podcasts-view-container input[name="q"] {
-    width: 200px;
-    transition: width 0.4s ease-out;
-    padding: 5px 5px;
-}
-.search-podcasts-view-container input[name="q"]:focus {
-    width: 300px;
-}
-/* Search Results */
-
-
-/* Playlist Podcasts */
-.ac-c-playlist-podcasts-list {
-}
-.ac-c-playlist-podcasts-list .playlists-podcasts-view-container {
-    width: 100%;
-    position: absolute;
-    top: -51px;
-    background: #f1f1f1;
-    padding: 45px 20px;
-    min-height: 100vh;
-}
-.ppsvc-title {
-    margin-bottom: 30px;
-}
-.ppsvc-close-btn {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-}
-.playlist-podcast-view-container {
-    box-shadow: 0px 0px 2px rgba(0,0,0,0.1);
-    padding: 15px 0px;
-    margin-bottom: 10px;
-}
-/* Playlist Podcasts */
+    }
+    .ac-c-todos-list ul li .input-group-addon {
+        border: none;
+        border-radius: 0;
+    }
+/* Todos List */
