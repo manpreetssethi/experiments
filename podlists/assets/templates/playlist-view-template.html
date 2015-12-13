@@ -1,0 +1,10 @@
+<%if(podcasts.length > 0){%>
+    <a href="#playlists/<%=id%>/view">
+<%}else {%>
+    <a>
+<%}%>
+        <div class="row">
+            <div class="col-xs-8"><%=name%></div>
+            <div class="col-xs-2"><span class="badge"><%=podcasts.length%></span></div>
+        </div>
+    </a>

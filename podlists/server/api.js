@@ -27,17 +27,20 @@ app.use(function(req, res, next) {
     /* Playlists */
     app.get('/api/playlists', function (req, res) {
         firebaseRef.child('playlists').once('value', function (snapshot) {
+            var _data = snapshot.val();
             var _return = {
                 fail: false,
-                data: snapshot.val()
+                data: !_data ? [] : _data
             };
             res.send(_return);
         });
     });
 
     app.post('/api/playlists', jsonParser, function (req, res) {
-        var newRef = firebaseRef.child('playlists').push({name: req.body.name, podcasts: req.body.podcasts});
-        res.send({id: newRef.key(), name: req.body.name, podcasts: req.body.podcasts});
+        var _postData = {name: req.body.name, podcasts: req.body.podcasts, createdAt: new Date().getTime()};
+        var newRef = firebaseRef.child('playlists').push(_postData);
+        _postData.id = newRef.key();
+        res.send(_postData);
     });
 
     app.put('/api/playlists/:id', jsonParser, function (req, res) {

@@ -4,15 +4,21 @@
 define(
     'podlists/views/AddPodcastToPlaylistsView',
     [
+        'text!podlists/templates/add-podcast-to-playlists-view-template.html',
         'podlists/views/BaseView',
         'podlists/views/AddPodcastToPlaylistView',
         'podlists/views/PodcastView',
     ],
-    function(BaseView, AddPodcastToPlaylistView, PodcastView) {
+    function(
+        viewTemplate,
+        BaseView,
+        AddPodcastToPlaylistView,
+        PodcastView
+    ) {
         var AddPodcastToPlaylistsView = BaseView.extend({
             className: 'add-podcast-to-playlists-view-container',
 
-            template: _.template($('#add-podcast-to-playlists-view-template').html()),
+            template: _.template(viewTemplate),
 
             events: {
                 'click button.close' : 'handleClickOnCloseButton'
@@ -22,7 +28,8 @@ define(
                 BaseView.prototype.initialize.call(this, options);
                 this.render()
                     .renderPodcastView(this.model)
-                    .fadeIn();
+                    .fadeModalIn()
+                    .stopBodyFromScrolling();
 
                 this.options.playlistsCollection.each(this.renderAddPodcastToPlaylistView, this);
             },
@@ -33,12 +40,12 @@ define(
             },
 
             renderPodcastView: function(model) {
-                this.$el.find('.modal-content').prepend(new PodcastView({model: model}).el);
+                this.$el.find('.aptpvc-podcast').html(new PodcastView({model: model}).el);
                 return this;
             },
 
             renderAddPodcastToPlaylistView: function(model) {
-                this.$el.find('.aptpvc-playlists').append(new AddPodcastToPlaylistView({model: model, podcastModel: this.model}).el);
+                this.$el.find('.aptpvc-playlists').prepend(new AddPodcastToPlaylistView({model: model, podcastModel: this.model}).el);
                 return this;
             },
 
@@ -47,9 +54,9 @@ define(
                 return this;
             },
 
-            fadeIn: function() {
-                this.$el.find('.modal').show().addClass('in');
-                return this;
+            close: function() {
+                this.letBodyScroll();
+                BaseView.prototype.close.call(this);
             }
         });
 

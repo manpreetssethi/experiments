@@ -14,13 +14,8 @@ define('podlists/views/PlaylistsView', ['podlists/views/BaseView', 'podlists/vie
             this.listenTo(this.collection, 'add', this.renderPlaylist, this);
         },
 
-        renderPlaylists: function(collection) {
-            collection.each(this.renderPlaylist, this);
-            return this;
-        },
-
         renderPlaylist: function(model) {
-            this.$el.append(new PlaylistView({model: model}).el);
+            this.$el.prepend(new PlaylistView({model: model}).el);
             return this;
         }
     });

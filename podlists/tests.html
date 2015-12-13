@@ -12,6 +12,8 @@
 
     <div id="mocha"></div>
 
+    <div id="fixtures" style="display: none;"></div>
+
     <!-- RequireJS -->
     <script src="bower_components/requirejs/require.js"></script>
     <script src="assets/js/config.js"></script>
@@ -24,9 +26,10 @@
 
             require(
                 [
-                    'tests/app-tests',
+//                    'tests/app-tests',
                     'tests/views-tests',
-                    'tests/models-tests',
+//                    'tests/models-tests',
+//                    'tests/collections-tests',
                 ],
                 function() {
                     mocha.run();

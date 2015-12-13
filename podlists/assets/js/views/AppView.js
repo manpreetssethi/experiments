@@ -4,6 +4,7 @@
 define(
     'podlists/views/AppView',
     [
+        'text!podlists/templates/app-view-template.html',
         'podlists/app/podlistsApp',
         'podlists/views/BaseView',
         'podlists/views/PlaylistsView',
@@ -15,6 +16,7 @@ define(
         'podlists/views/AddPodcastToPlaylistsView'
     ],
     function(
+        viewTemplate,
         podlistsApp,
         BaseView,
         PlaylistsView,
@@ -26,21 +28,27 @@ define(
         AddPodcastToPlaylistsView
     ){
         var AppView = BaseView.extend({
+            playlistPodcastsView: null,
+
+            template: _.template(viewTemplate),
+
             initialize: function(options) {
                 BaseView.prototype.initialize.call(this, options);
-                this.render();
 
+                this.render();
+                this.renderPlaylistsView(this.model.get('playlistsCollection'));
+                this.renderCreatePlaylistView(this.model.get('playlistsCollection'));
+                this.renderSearchPodcastsView(new PodcastsSearchResultsCollection());
+
+                // Mediate for events triggered on the EventBus
                 podlistsApp.eventBus.on('ADD-PODCAST-TO-PLAYLIST', function(payload){
                     this.renderAddPodcastToPlaylistView(payload, this.model.get('playlistsCollection'));
                 }, this);
             },
 
-            playlistPodcastsView: null,
-
             render: function() {
-                this.renderPlaylistsView(this.model.get('playlistsCollection'));
-                this.renderCreatePlaylistView(this.model.get('playlistsCollection'));
-                this.renderSearchPodcastsView(new PodcastsSearchResultsCollection());
+                this.$el.html(this.template({}));
+                return this;
             },
 
             renderPlaylistsView: function(collection) {
@@ -52,6 +60,12 @@ define(
                 this.closePlaylistPodcastsView();
 
                 var playlistModel = this.model.get('playlistsCollection').get(playlistId);
+
+                // Reference not available
+                if(typeof playlistModel === 'undefined') {
+                    return this;
+                }
+
                 var playlistPodcastsCollection = new PlaylistPodcastsCollection();
 
                 // Populate by podcast ids in playlist
@@ -64,10 +78,29 @@ define(
                     playlistModel: playlistModel
                 });
 
-                this.$el.find('.ac-content .ac-c-playlist-podcasts-list').html(playlistPodcastsView.el);
+                this.$el.append(playlistPodcastsView.el);
 
                 this.playlistPodcastsView = playlistPodcastsView;
 
+                return this;
+            },
+
+            renderCreatePlaylistView: function(collection) {
+                this.$el.find('.ac-content .ac-c-create-playlist-form').html(new CreatePlaylistView({collection: collection}).el);
+                return this;
+            },
+
+            renderSearchPodcastsView: function(collection) {
+                this.$el.find('.ac-content .ac-c-search-podcasts-form').html(new SearchPodcastsView({collection: collection}).el);
+                return this;
+            },
+
+            renderAddPodcastToPlaylistView: function(model, playlistsCollection) {
+                var view = new AddPodcastToPlaylistsView({
+                    model: model,
+                    playlistsCollection: playlistsCollection
+                });
+                this.$el.append(view.el);
                 return this;
             },
 
@@ -78,24 +111,6 @@ define(
                 };
                 return this;
             },
-
-            renderCreatePlaylistView: function(collection) {
-                var view = new CreatePlaylistView({collection: collection, el: this.$el.find('.ac-content .ac-c-create-playlist-form')});
-                return this;
-            },
-
-            renderSearchPodcastsView: function(collection) {
-                return new SearchPodcastsView({collection: collection, el: this.$el.find('.ac-content .search-podcasts-view-container')});
-            },
-
-            renderAddPodcastToPlaylistView: function(model, playlistsCollection) {
-                var view = new AddPodcastToPlaylistsView({
-                    model: model,
-                    playlistsCollection: playlistsCollection
-                });
-                this.$el.append(view.el);
-                return this;
-            }
         });
         return AppView;
     }

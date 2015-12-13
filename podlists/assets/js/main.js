@@ -28,8 +28,7 @@ require(
         podlistsApp.data        = _data;
         podlistsApp.eventBus    = new EventEmitter();
         podlistsApp.router      = new AppRouter();
-        podlistsApp.view        = new AppView({el: $('.app-container'), model: _data});
-
+        podlistsApp.view        = new AppView({model: _data});
 
         // fetch playlists and start the history
         var playlistsCollection = podlistsApp.data.get('playlistsCollection');
@@ -38,5 +37,8 @@ require(
                 podlistsApp.startHistory();
             }
         })
+
+        // Insert app view in the body
+        $('.container').html(podlistsApp.view.el);
     }
 );

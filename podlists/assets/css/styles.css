@@ -1,3 +1,7 @@
+body.no-scroll {
+    overflow: hidden;
+}
+
 .app-container {
     margin: 50px 0px 0px 0px;
 }
@@ -6,48 +10,129 @@
     position: relative;
 }
 
+.modal.fade.in {
+    background: rgba(0,0,0,0.5);
+}
+
+/* Create Playlist */
+    .ac-c-create-playlist-form {
+        background: #f1f1f1;
+        border-bottom: solid 1px #fff;
+    }
+    .ac-c-create-playlist-form input[type="text"] {
+        width: 100%;
+        padding: 10px 8px;
+        margin-bottom: 1px;
+        border: none;
+        background: transparent;
+    }
+    .cpvc-information-block {
+        height: 0px;
+        padding: 0px 10px;
+        overflow: hidden;
+        -webkit-transition: height 0.3s;
+        -moz-transition: height 0.3s;
+        -ms-transition: height 0.3s;
+        -o-transition: height 0.3s;
+        transition: height 0.3s;
+        text-align: right;
+    }
+    .cpvc-information-block.open {
+        height: 30px;
+        color: #585858;
+    }
+/* Create Playlist */
+
+/* Playlists */
+    .playlists-view-container {
+        list-style: none;
+        margin: 0px 0px;
+        padding: 0px 0px;
+    }
+/* Playlists */
+
+/* Playlist */
+    .playlist-view-container>a{
+        display: block;
+        height: 43px;
+        background: #f1f1f1;
+        border-bottom: solid 1px #fff;
+        padding: 10px 10px;
+    }
+/* Playlist */
+
+/* Podcast */
+    .podcast-view-container {
+        box-shadow: 0px 0px 2px rgba(0,0,0,0.1);
+        padding: 15px 10px;
+    }
+    .podcast-view-container img {
+        display: block;
+        margin: 0 auto;
+    }
+/* Podcast */
+
 
 /* Search Results */
-.search-podcasts-view-container {
-    /*padding: 22px 0px;*/
-    position: absolute;
-    width: 100%;
-    top: 0px;
-}
+    .search-podcasts-view-container {
+        /*padding: 22px 0px;*/
+        position: absolute;
+        width: 100%;
+        top: 0px;
+    }
 
-.search-podcasts-view-container input[name="q"] {
-    width: 200px;
-    transition: width 0.4s ease-out;
-    padding: 5px 5px;
-}
-.search-podcasts-view-container input[name="q"]:focus {
-    width: 300px;
-}
+    .search-podcasts-view-container input[name="q"] {
+        width: 200px;
+        transition: width 0.4s ease-out;
+        padding: 5px 5px;
+    }
+    .search-podcasts-view-container input[name="q"]:focus {
+        width: 300px;
+    }
+
+    .search-podcasts-view-container .podcast-view-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .spvc-feedback-message {
+        text-align: center;
+        font-size: 20px;
+        color: #BFBFBF;
+        line-height: 400px;
+    }
 /* Search Results */
 
+/* Playlist Podcasts */
+    .playlist-podcast-view-container {
+        margin-bottom: 10px;
+    }
+    .ppsvc-list {
+        max-height: 500px;
+        overflow-y: scroll;
+    }
+/* Playlist Podcasts */
 
-/* Playlist Podcasts */
-.ac-c-playlist-podcasts-list {
-}
-.ac-c-playlist-podcasts-list .playlists-podcasts-view-container {
-    width: 100%;
-    position: absolute;
-    top: -51px;
-    background: #f1f1f1;
-    padding: 45px 20px;
-    min-height: 100vh;
-}
-.ppsvc-title {
-    margin-bottom: 30px;
-}
-.ppsvc-close-btn {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-}
-.playlist-podcast-view-container {
-    box-shadow: 0px 0px 2px rgba(0,0,0,0.1);
-    padding: 15px 0px;
-    margin-bottom: 10px;
-}
-/* Playlist Podcasts */
+/* Add Podcast to Playlists */
+    .aptpvc-podcast {
+        margin: 20px 0px;
+        background: #f1f1f1;
+    }
+
+    .aptpvc-playlists {
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+/* Add Podcast to Playlists */
+
+/* Add Podcast to Playlist */
+    .add-podcast-to-playlist-view-container {
+        border-bottom: solid 2px #f1f1f1;
+        padding: 0px 30px;
+    }
+    .add-podcast-to-playlist-view-container:hover {
+        background: #f1f1f1;
+    }
+    button[name="aptpvc-add-to-playlist"] {
+        margin: 25px 0px;
+    }
+/* Add Podcast to Playlist */

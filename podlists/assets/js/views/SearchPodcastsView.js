@@ -4,65 +4,71 @@
 define(
     'podlists/views/SearchPodcastsView',
     [
+        'text!podlists/templates/search-podcasts-view-template.html',
+        'text!podlists/templates/search-podcasts-feedback-template.html',
         'podlists/views/BaseView',
         'podlists/views/PodcastSearchResultView'
     ],
     function(
+        viewTemplate,
+        feedbackTemplate,
         BaseView,
         PodcastSearchResultView
     ){
         var SearchPodcastsView = BaseView.extend({
-            initialize: function(options) {
-                BaseView.prototype.initialize.call(this, options);
+            template: _.template(viewTemplate),
 
-                // When searching
-                this.listenTo(this.collection, 'request', this.showRequestFeedback, this);
-
-                // When search results are added
-                this.listenTo(this.collection, 'sync', function(collection){
-                    this.hideRequestFeedback();
-                    this.renderSearchResults(collection);
-                }, this);
-
-                // When there's an error
-                this.listenTo(this.collection, 'error', function(){}, this);
-            },
+            className: 'search-podcasts-view-container',
 
             events: {
                 'submit form': 'handleFormSubmission'
             },
 
+            initialize: function(options) {
+                BaseView.prototype.initialize.call(this, options);
+
+                this.render();
+
+                // When searching
+                this.listenTo(this.collection, 'request', function(){
+                    this.renderFeedback('hang on..')
+                }, this);
+
+                // When search results are added
+                this.listenTo(this.collection, 'sync', this.renderSearchResults, this);
+
+                // When there's an error
+                this.listenTo(this.collection, 'error', function(){}, this);
+            },
+
+            render: function() {
+                this.$el.html(this.template());
+                return this;
+            },
+
             renderSearchResults: function(collection) {
-                collection.each(this.renderSearchResult, this);
+                if(collection.length > 0) {
+                    this.clearFeedback();
+                    collection.each(this.renderSearchResult, this);
+                } else {
+                    this.renderFeedback('no results found, have you tried looking for love?');
+                }
+                return this;
+            },
+
+            renderFeedback: function(message) {
+                var _template = _.template(feedbackTemplate);
+                this.$el.find('.spvc-results-list').html(_template({message: message}));
+                return this;
+            },
+
+            clearFeedback: function() {
+                this.$el.find('.spvc-feedback-message').remove();
+                return this;
             },
 
             renderSearchResult: function(model) {
                 this.appendSearchResult(new PodcastSearchResultView({model: model}).el);
-                return this;
-            },
-
-            showRequestFeedback: function() {
-                this.$el.find('.spvc-request-feedback').removeClass('hide');
-                return this;
-            },
-
-            hideRequestFeedback: function() {
-                this.$el.find('.spvc-request-feedback').addClass('hide');
-                return this;
-            },
-
-            showErrorFeedback: function() {
-                this.$el.find('.spvc-error-feedback').removeClass('hide');
-                return this;
-            },
-
-            hideErrorFeedback: function() {
-                this.$el.find('.spvc-error-feedback').addClass('hide');
-                return this;
-            },
-
-            clearSearchResults: function() {
-                this.$el.find('.spvc-results-list>div').remove();
                 return this;
             },
 
@@ -78,12 +84,22 @@ define(
                 return this;
             },
 
+            getSearchQuery: function() {
+                return this.$el.find('input[name="q"]').val();
+            },
+
+            isThereASearchQuery: function() {
+                if($.trim(this.getSearchQuery()) === '') {
+                    return false;
+                }
+                return true;
+            },
+
             handleFormSubmission: function(e) {
                 e.preventDefault();
-                this.clearSearchResults();
-                this.hideRequestFeedback();
-                this.hideErrorFeedback();
-                this.search(this.$el.find('input[name="q"]').val());
+                if(this.isThereASearchQuery()) {
+                    this.search(this.getSearchQuery());
+                }
                 return this;
             }
         });

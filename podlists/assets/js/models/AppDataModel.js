@@ -5,9 +5,7 @@ define('podlists/models/AppDataModel', ['podlists/models/BaseModel'], function(B
     var AppDataModel = BaseModel.extend({
         defaults: {
             playlistsCollection: null,
-            podcastsCollection: null,
-            audioPlayerModel: null,
-            userModel: null,
+            podcastsCollection: null
         }
     });
     return AppDataModel;

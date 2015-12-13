@@ -6,18 +6,27 @@ define(
     [
         'jquery',
         'underscore',
+        'text!podlists/templates/podcast-search-result-view-template.html',
         'podlists/views/PodcastView',
         'podlists/app/podlistsApp'
     ],
-    function($, _, PodcastView, podlistsApp) {
+    function(
+        $,
+        _,
+        viewTemplate,
+        PodcastView,
+        podlistsApp
+    ) {
         var PodcastSearchResultView = PodcastView.extend({
             tagName: 'div',
 
-            className: 'podcast-search-result-view-container',
+            className: function(){
+                return PodcastView.prototype.className+' podcast-search-result-view-container';
+            },
 
             template: function(templateItems) {
                 var _superTemplate = PodcastView.prototype.template(templateItems);
-                var _myTemplate = _.template($('#podcast-search-result-view-template').html())(templateItems);
+                var _myTemplate = _.template(viewTemplate)(templateItems);
                 return _superTemplate+"\n"+_myTemplate;
             },
 

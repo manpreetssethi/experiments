@@ -4,14 +4,14 @@
 define(
     'podlists/views/AddPodcastToPlaylistView',
     [
+        'text!podlists/templates/add-podcast-to-playlist-view-template.html',
         'podlists/views/BaseView',
-        'podlists/views/PodcastView',
     ],
-    function(BaseView, PodcastView) {
+    function(viewTemplate, BaseView) {
         var AddPodcastToPlaylistView = BaseView.extend({
             className: 'add-podcast-to-playlist-view-container',
 
-            template: _.template($('#add-podcast-to-playlist-view-template').html()),
+            template: _.template(viewTemplate),
 
             events: {
                 'click button[name="aptpvc-add-to-playlist"]' : 'handleClickOnAddToPlaylistButton'
@@ -21,8 +21,8 @@ define(
                 BaseView.prototype.initialize.call(this, options);
                 this.render();
 
-                // Disable the "Add" button once saving
-                this.listenToOnce(this.model, 'sync', this.disableAddToPlaylistButton, this);
+                // Once added
+                this.listenToOnce(this.model, 'sync', this.render, this);
             },
 
             render: function() {
@@ -41,11 +41,6 @@ define(
 
             handleClickOnAddToPlaylistButton: function(e) {
                 this.addToPlaylist();
-                return this;
-            },
-
-            disableAddToPlaylistButton: function() {
-                this.$el.find('button[name="aptpvc-add-to-playlist"]').attr('disabled', true).text('added');
                 return this;
             },
 

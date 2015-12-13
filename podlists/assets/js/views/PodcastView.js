@@ -3,11 +3,23 @@
  */
 define(
     'podlists/views/PodcastView',
-    ['jquery', 'underscore', 'podlists/views/BaseView'],
-    function($, _, BaseView) {
+    [
+        'jquery',
+        'underscore',
+        'text!podlists/templates/podcast-view-template.html',
+        'podlists/views/BaseView'
+    ],
+    function(
+        $,
+        _,
+        viewTemplate,
+        BaseView
+    ) {
         var PodcastView = BaseView.extend({
+            className: 'podcast-view-container',
+
             template: function(templateItems){
-                return _.template($('#podcast-view-template').html())(templateItems);
+                return _.template(viewTemplate)(templateItems);
             },
 
             initialize: function(options) {

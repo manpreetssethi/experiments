@@ -4,16 +4,32 @@
 define(
     'podlists/views/CreatePlaylistView',
     [
-        'podlists/views/BaseView',
-        'podlists/models/PlaylistModel'
+        'text!podlists/templates/create-playlist-view-template.html',
+        'podlists/views/BaseView'
     ],
     function(
-        BaseView,
-        PlaylistModel
+        viewTemplate,
+        BaseView
     ){
         var CreatePlaylistView = BaseView.extend({
+            className: 'create-playlist-view-container',
+
             events: {
-                'submit form': 'handleFormSubmissionEvent'
+                'submit form': 'handleFormSubmissionEvent',
+                'focus input[name="playlist-name"]' : 'handleFocusOnPlaylistNameField',
+                'blur input[name="playlist-name"]' : 'handleBlurInPlaylistNameField',
+            },
+
+            template: _.template(viewTemplate),
+
+            initialize: function(options) {
+                BaseView.prototype.initialize.call(this, options);
+                this.render();
+            },
+
+            render: function() {
+                this.$el.html(this.template({}));
+                return this;
             },
 
             handleFormSubmissionEvent: function(e) {
@@ -22,30 +38,40 @@ define(
                 return this;
             },
 
+            handleFocusOnPlaylistNameField: function(e) {
+                this.showInformationBlock();
+                return this;
+            },
+
+            handleBlurInPlaylistNameField: function(e) {
+                this.hideInformationBlock();
+                return this;
+            },
+
+            showInformationBlock: function() {
+                this.$el.find('.cpvc-information-block').addClass('open');
+                return this;
+            },
+
+            hideInformationBlock: function() {
+                this.$el.find('.cpvc-information-block').removeClass('open');
+                return this;
+            },
+
             savePlaylist: function(name) {
-                this.disableSubmitButton();
-
-                var model = this.collection.create({
-                    name: name
-                }, {wait: true});
-
-                if(!model.isValid()) {
-                    alert(model.validationError);
-                } else {
-                    this.reset();
+                if(typeof name === 'undefined') {
+                    this.showErrorMessage('Provide a name!');
                 }
 
-                this.enableSubmitButton();
-                return this;
-            },
+                var model = this.collection.create({name: name}, {wait: true});
 
-            disableSubmitButton: function() {
-                this.$el.find('input[type="submit"]').attr('disabled', true);
-                return this;
-            },
+                if(typeof model === 'object' && !model.isValid()) {
+                    this.showErrorMessage('Provide a name!');
+                    return this;
+                }
 
-            enableSubmitButton: function() {
-                this.$el.find('input[type="submit"]').removeAttr('disabled');
+                this.reset();
+
                 return this;
             },
 

@@ -16,7 +16,9 @@ define(
         var PlaylistPodcastView = PodcastView.extend({
             tagName: 'div',
 
-            className: 'playlist-podcast-view-container',
+            className: function(){
+                return PodcastView.prototype.className+' playlist-podcast-view-container';
+            },
 
             initialize: function(options) {
                 PodcastView.prototype.initialize.call(this, options);
@@ -26,22 +28,6 @@ define(
                 this.listenToOnce(this.model, 'sync', this.render, this);
 
                 this.model.fetch();
-            },
-
-            //template: function(templateItems) {
-            //    var _superTemplate = PodcastView.prototype.template(templateItems);
-            //    var _myTemplate = _.template($('#podcast-search-result-view-template').html())(templateItems);
-            //    return _superTemplate+"\n"+_myTemplate;
-            //},
-
-            handleClickOnAddToPlaylistButton: function(e) {
-                this.addToPlaylist();
-                return this;
-            },
-
-            addToPlaylist: function() {
-                podlistsApp.eventBus.trigger('ADD-PODCAST-TO-PLAYLIST', this.model);
-                return this;
             }
         });
         return PlaylistPodcastView;

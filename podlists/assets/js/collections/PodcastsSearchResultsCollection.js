@@ -6,7 +6,7 @@ define(
     ['podlists/collections/BaseCollection', 'podlists/helpers/api.config', 'podlists/models/PodcastModel'],
     function(BaseCollection, apiConfig, PodcastModel) {
         var PodcastsSearchResultsCollection = BaseCollection.extend({
-            url: '//experiments.local:3000/api/podcasts/search',
+            url: apiConfig.podcasts.search,
 
             model: PodcastModel,
 

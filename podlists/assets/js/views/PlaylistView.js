@@ -1,21 +1,35 @@
 /**
  * Created by manpreet on 11/12/15.
  */
-define('podlists/views/PlaylistView', ['underscore', 'podlists/views/BaseView'], function(_, BaseView){
-    var PlaylistView = BaseView.extend({
-        tagName: 'li',
+define(
+    'podlists/views/PlaylistView',
+    [
+        'underscore',
+        'text!podlists/templates/playlist-view-template.html',
+        'podlists/views/BaseView'
+    ],
+    function(_, viewTemplate, BaseView){
+        var PlaylistView = BaseView.extend({
+            tagName: 'li',
 
-        template: _.template('<a href="#playlists/<%=id%>/view"><%=name%></a>'),
+            className: 'playlist-view-container',
 
-        initialize: function(options) {
-            BaseView.prototype.initialize.call(this, options);
-            this.render();
-        },
+            template: _.template(viewTemplate),
 
-        render: function() {
-            this.$el.html(this.template(this.model.toJSON()));
-            return this;
-        }
-    });
-    return PlaylistView;
-});
+            initialize: function(options) {
+                BaseView.prototype.initialize.call(this, options);
+
+                this.render();
+                
+                this.listenTo(this.model, 'change', this.render, this)
+            },
+
+            render: function() {
+                this.$el.html(this.template(this.model.toJSON()));
+                return this;
+            }
+        });
+        return PlaylistView;
+
+    }
+);

@@ -5,22 +5,32 @@ define(
     'podlists/views/PlaylistPodcastsView',
     [
         'underscore',
+        'text!podlists/templates/playlist-podcasts-view-template.html',
         'podlists/views/BaseView',
         'podlists/views/PlaylistPodcastView'
     ],
     function(
         _,
+        viewTemplate,
         BaseView,
         PlaylistPodcastView
     ){
         var PlaylistPodcastsView = BaseView.extend({
             className: 'playlists-podcasts-view-container',
 
-            template: _.template($('#playlist-podcasts-template').html()),
+            template: _.template(viewTemplate),
+
+            events: {
+                'click a.close' : 'handleClickOnCloseButton'
+            },
 
             initialize: function(options) {
                 BaseView.prototype.initialize.call(this, options);
-                this.render();
+                this.render()
+                    .fadeModalIn()
+                    .stopBodyFromScrolling();
+
+                // Render models
                 this.collection.each(this.renderPlaylistPodcast, this);
             },
 
@@ -30,8 +40,13 @@ define(
             },
 
             renderPlaylistPodcast: function(model) {
-                this.$el.append(new PlaylistPodcastView({model: model}).el);
+                this.$el.find('.ppsvc-list').append(new PlaylistPodcastView({model: model}).el);
                 return this;
+            },
+
+            close: function() {
+                this.letBodyScroll();
+                BaseView.prototype.close.call(this);
             }
         });
         return PlaylistPodcastsView;

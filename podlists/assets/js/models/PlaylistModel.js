@@ -6,7 +6,8 @@ define('podlists/models/PlaylistModel', ['podlists/models/BaseModel'], function(
         defaults: {
             id: null,
             name: null,
-            podcasts: []
+            podcasts: [],
+            createdAt: null
         },
 
         validate: function(attrs) {
@@ -16,7 +17,11 @@ define('podlists/models/PlaylistModel', ['podlists/models/BaseModel'], function(
         },
 
         addPodcast: function(value, options) {
-            return this.get('podcasts').push(value);
+            var _podcasts = this.get('podcasts');
+            _podcasts.push(value);
+            this.trigger('change', this, _podcasts);
+            this.trigger('change:podcasts', this, _podcasts);
+            return this;
         },
 
         hasPodcast: function(value) {
