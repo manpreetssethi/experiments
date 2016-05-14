@@ -1,8 +1,8 @@
-/**
- * Created by manpreet on 12/05/16.
- */
-var ArcLoader = React.createClass({
-	render: function() {
+import React from 'react';
+import CustomCanvas from './CustomCanvas';
+
+class ArcLoader extends React.Component {
+	render() {
 		// Default className of the main container
 		var containerClassName = 'arc-loader';
 
@@ -37,4 +37,6 @@ var ArcLoader = React.createClass({
 			</div>
 		);
 	}
-});
+}
+
+export default ArcLoader;

@@ -1,6 +1,11 @@
-var UploadForm = React.createClass({
-	getInitialState: function() {
-		return {
+import React from 'react';
+import ArcLoader from './ArcLoader';
+import FileUploader from './FileUploader';
+
+class UploadForm extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
 			uploading: false,
 			percentageCompleted: 0,
 			completed: false,
@@ -14,14 +19,20 @@ var UploadForm = React.createClass({
 				lineWidth: 5,
 				strokeStyle: '#e1e1e1'
 			}
-		};
-	},
+		}
 
-	handleSubmit: function(e) {
+
+		// Apparently React with ES6 doesn't bind "this" to
+		// custom methods (https://github.com/goatslacker/alt/issues/283)
+		this.showProgress = this.showProgress.bind(this);
+		this.completeUpload = this.completeUpload.bind(this);
+	}
+
+	handleSubmit(e) {
 		e.preventDefault();
-	},
+	}
 
-	showProgress: function(percentage) {
+	showProgress(percentage) {
 		// update state
 		this.setState({
 			uploading: true,
@@ -30,18 +41,18 @@ var UploadForm = React.createClass({
 				endAngle: mathUtils.arc.percentageToEndAngle(percentage)
 			})
 		})
-	},
+	}
 
-	completeUpload: function(filename) {
+	completeUpload(filename) {
 		this.setState({
 			completed: true,
 			uploading: false
 		})
-	},
+	}
 
-	showError: function(filename) {},
+	showError(filename) {}
 
-	render: function() {
+	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div className="row"></div>
@@ -53,7 +64,7 @@ var UploadForm = React.createClass({
 							width="210"
 							height="210"
 							completed={this.state.completed}
-						/>
+							/>
 					</div>
 				</div>
 				<div className="row">
@@ -62,17 +73,19 @@ var UploadForm = React.createClass({
 							onProgress={this.showProgress}
 							onError={this.showError}
 							onComplete={this.completeUpload}
-						/>
+							/>
 					</div>
 				</div>
 			</form>
 		);
 	}
-});
+}
+
+export default UploadForm;
 
 var mathUtils = {
 	arc: {
-		percentageToEndAngle: function(percentage) {
+		percentageToEndAngle: (percentage) => {
 			return 2 * Math.PI * percentage - (Math.PI / 2);
 		}
 	}

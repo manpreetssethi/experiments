@@ -1,14 +1,28 @@
-var FileUploader = React.createClass({
-	getInitialState: function() {
-		return {
+import React from 'react';
+
+class FileUploader extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
 			uploading: false,
 			percentage: 0,
 			completed: false,
 			interval: null
-		};
-	},
+		}
 
-	startUpload: function() {
+		// Apparently React with ES6 doesn't bind "this" to
+		// custom methods (https://github.com/goatslacker/alt/issues/283)
+		this.startUpload = this.startUpload.bind(this);
+		this.stopUpload = this.stopUpload.bind(this);
+		this.clearInterval = this.clearInterval.bind(this);
+	}
+
+	startUpload() {
+		// Already in progress (ignore the clicks)
+		if(this.state.uploading) {
+			return;
+		}
+
 		this.setState({
 			interval: setInterval(function(){
 				this.state.percentage += 0.0005;
@@ -27,25 +41,25 @@ var FileUploader = React.createClass({
 			}.bind(this), 5),
 			uploading: true
 		});
-	},
+	}
 
-	stopUpload: function() {
+	stopUpload() {
 		this.clearInterval();
 
 		if(this.props.onStop) {
 			this.props.onStop(null);
 		}
-	},
+	}
 
-	clearInterval: function() {
+	clearInterval() {
 		clearInterval(this.state.interval);
 		this.setState({
 			interval: null,
 			uploading: false
 		});
-	},
+	}
 
-	render: function() {
+	render() {
 		return (
 			<div className="file-uploader">
 				<div className="row">
@@ -60,4 +74,6 @@ var FileUploader = React.createClass({
 			</div>
 		);
 	}
-});
+}
+
+export default FileUploader;

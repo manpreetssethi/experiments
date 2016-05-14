@@ -1,22 +1,21 @@
-/**
- * Created by manpreet on 12/05/16.
- */
-var CustomCanvas = React.createClass({
-	componentDidMount: function() {
-		this.paint();
-	},
+import React from 'react';
 
-	componentDidUpdate: function() {
+class CustomCanvas extends React.Component {
+	componentDidMount() {
 		this.paint();
-	},
+	}
 
-	paint: function() {
+	componentDidUpdate() {
+		this.paint();
+	}
+
+	paint() {
 		if(typeof this.props.arcSpecs !== 'undefined') {
 			this.paintArc(this._canvas.getContext('2d'), this.props.arcSpecs);
 		}
-	},
+	}
 
-	paintArc: function(context, specs) {
+	paintArc(context, specs) {
 		// Arc
 		context.beginPath();
 		context.arc(
@@ -32,9 +31,11 @@ var CustomCanvas = React.createClass({
 		context.lineWidth = specs.lineWidth;
 		context.strokeStyle = specs.strokeStyle;context.stroke();
 		context.closePath();
-	},
+	}
 
-	render: function() {
+	render() {
 		return (<canvas width={this.props.width} height={this.props.height} ref={(c) => this._canvas = c} />);
 	}
-});
+}
+
+export default CustomCanvas;
