@@ -24,6 +24,7 @@ var UploadForm = React.createClass({
 	showProgress: function(percentage) {
 		// update state
 		this.setState({
+			uploading: true,
 			percentageCompleted: parseInt(percentage*100),
 			arcSpecs: Object.assign(this.state.arcSpecs, {
 				endAngle: mathUtils.arc.percentageToEndAngle(percentage)
@@ -33,7 +34,8 @@ var UploadForm = React.createClass({
 
 	completeUpload: function(filename) {
 		this.setState({
-			completed: true
+			completed: true,
+			uploading: false
 		})
 	},
 
@@ -42,10 +44,10 @@ var UploadForm = React.createClass({
 	render: function() {
 		return (
 			<form onSubmit={this.handleSubmit}>
+				<div className="row"></div>
 				<div className="row">
-					<div className="col s12">
+					<div className="col-lg-12">
 						<ArcLoader
-							show={this.state.uploading}
 							percentageCompleted={this.state.percentageCompleted}
 							specs={this.state.arcSpecs}
 							width="210"
@@ -54,8 +56,8 @@ var UploadForm = React.createClass({
 						/>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col s12">
+				<div className="row">
+					<div className="col-lg-12">
 						<FileUploader
 							onProgress={this.showProgress}
 							onError={this.showError}

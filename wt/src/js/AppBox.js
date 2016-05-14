@@ -1,15 +1,13 @@
-var AppBox = React.createClass({
-	render: function() {
+import React from 'react';
+
+class AppBox extends React.Component {
+	render() {
 		return (
 			<div className="appBox">
 				<UploadForm />
 			</div>
 		);
 	}
-});
+}
 
-// When document is ready
-$(document).ready(function(){
-	// Render the App
-	ReactDOM.render(<AppBox />, document.getElementById('app'));
-});
+export default AppBox;

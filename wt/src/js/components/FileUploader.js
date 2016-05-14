@@ -11,7 +11,7 @@ var FileUploader = React.createClass({
 	startUpload: function() {
 		this.setState({
 			interval: setInterval(function(){
-				this.state.percentage += 0.001;
+				this.state.percentage += 0.0005;
 
 				if(typeof this.props.onProgress !== 'undefined') {
 					this.props.onProgress(this.state.percentage);
@@ -24,7 +24,7 @@ var FileUploader = React.createClass({
 						this.props.onComplete(null);
 					}
 				}
-			}.bind(this), 1),
+			}.bind(this), 5),
 			uploading: true
 		});
 	},
@@ -49,11 +49,12 @@ var FileUploader = React.createClass({
 		return (
 			<div className="file-uploader">
 				<div className="row">
-					<div className="col s12">
-						<div className="right">
+					<div className="col-lg-12">
+						<div className="pull-right">
 							<button onClick={this.startUpload}>&#9658;</button>
 							<button onClick={this.stopUpload}>&#9724;</button>
 						</div>
+						<div class="clearfix"></div>
 					</div>
 				</div>
 			</div>

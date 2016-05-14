@@ -1,16 +1,18 @@
-var gulp        = require('gulp'),
-	less 	    = require('gulp-less');
+var gulp = require('gulp');
+var browserify = require('browserify');
+var babelify = require('babelify');
+var source = require('vinyl-source-stream');
 
-var PATH = {
-    'LESS_ROOT' 	  : 'src/less',
-    'DIST_ROOT' 	  : 'build'
-};
-
-gulp.task('default', ['less2css']);
-
-// Compile sass to css
-gulp.task('less2css', function () {
-  //   gulp.src([PATH.LESS_ROOT + '*.less'])
-		// .pipe(less())
-		// .pipe(gulp.dest(PATH.DIST_ROOT+'/less'));
+gulp.task('build', function () {
+    return browserify({entries: './app.jsx', extensions: ['.jsx'], debug: true})
+        .transform('babelify', {presets: ['es2015', 'react']})
+        .bundle()
+        .pipe(source('bundle.js'))
+        .pipe(gulp.dest('dist'));
 });
+
+gulp.task('watch', ['build'], function () {
+    gulp.watch('*.jsx', ['build']);
+});
+
+gulp.task('default', ['watch']);
