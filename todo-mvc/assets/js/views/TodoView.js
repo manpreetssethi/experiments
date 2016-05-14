@@ -21,7 +21,8 @@ define(
             template: _.template(viewTemplate),
 
             events: {
-                'change input[name="completed"]' : 'handleChangeInCompletedCheckbox'
+                'change input[name="completed"]' : 'handleChangeInCompletedCheckbox',
+                'click' : 'handleClickInTitle'
             },
 
             initialize: function(options) {
@@ -38,18 +39,28 @@ define(
             },
 
             handleChangeInCompletedCheckbox: function(e) {
-                this.updateCompleted(e.currentTarget.checked);
+                this.updateTask(e.currentTarget.checked);
                 return this;
             },
 
-            updateCompleted: function(value) {
+            handleClickInTitle: function(e) {
+                alert('hi');
+                this.$el.find('input[name="title"]').removeAttr('disabled');
+                return this;
+            },
+
+            updateTask: function(value) {
                 try {
-                    this.model.save({
-                        completed: value
-                    });
+                    if(value) {
+                        this.model.markAsDone();
+                    } else {
+                        this.model.markAsPending();
+                    }
+
+                    this.model.save();
                 } catch(e) {
-                    // log error
-                    throw new Error('could not save model');
+                    // log error & let the user know
+                    throw new Error('could not update the task');
                 }
                 return this;
             }

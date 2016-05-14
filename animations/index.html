@@ -1,0 +1,37 @@
+<hmtl>
+	<head>
+		<style>
+			#circle {
+				width: 200px;
+				height: 200px;
+				border: solid 1px black;
+				border-radius: 100px;
+				position: relative;
+				animation-name: example;
+				animation-duration: 4s;
+			}
+			@keyframes example {
+				0%   {background-color: red; left:0px; top:0px;}
+				25%  {background-color: yellow; left:200px; top:0px;}
+				50%  {background-color: blue; left:200px; top:200px;}
+				75%  {background-color: green; left:0px; top:200px;}
+				100% {background-color: red; left:0px; top:0px;}
+			}
+		</style>
+	</head>
+	<body>
+
+		<div id="circle" class=""></div>
+
+		<button id="button">move from left to 100px</button>
+
+		<script>
+			var button = document.getElementById('button');
+			var circle = document.getElementById('circle');
+			button.addEventListener('click', function(){
+				circle.classList.add('move-left');
+			})
+		</script>
+
+	</body>
+</hmtl>

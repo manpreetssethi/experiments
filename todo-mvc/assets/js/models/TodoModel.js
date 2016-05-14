@@ -10,6 +10,14 @@ define('todomvc/models/TodoModel', ['todomvc/models/BaseModel'], function(BaseMo
             createdAt: null
         },
 
+        markAsDone: function() {
+            return this.set('completed', true);
+        },
+
+        markAsPending: function() {
+            return this.set('completed', false);
+        },
+
         validate: function(attrs) {
             if(attrs.title === '') {
                 return 'Provide a task title!';

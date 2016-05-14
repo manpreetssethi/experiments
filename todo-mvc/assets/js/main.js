@@ -17,10 +17,7 @@ require(
         EventEmitter
     ){
         var _data = new AppDataModel({
-            todosCollection: new TodosCollection(),
-            podcastsCollection: null,
-            audioPlayerModel: null,
-            userModel: null
+            todosCollection: new TodosCollection()
         });
 
         todoMVCApp.data        = _data;

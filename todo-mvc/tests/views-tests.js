@@ -77,6 +77,11 @@ define(
                 this.todoView.should.be.ok;
             })
 
+            it('should allow you to edit the title when it is clicked', function(){
+                this.todoView.$el.click();
+                should.equal(this.todoView.$el.find('input[type="text"][name="title"]').attr('disabled'), undefined);
+            })
+
             it('should render as a list item', function(){
                 this.todoView.el.nodeName.should.equal('LI');
             })
@@ -86,7 +91,7 @@ define(
             })
 
             it('should save model when checkbox changes', function(){
-                this.todoView.updateCompleted();
+                this.todoView.updateTask();
                 should.equal(this.save_stub.calledOnce, true);
             })
         });

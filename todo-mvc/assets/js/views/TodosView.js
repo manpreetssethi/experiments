@@ -19,7 +19,7 @@ define(
             initialize: function(options) {
                 BaseView.prototype.initialize.call(this, options);
 
-                // When a new playlist is added, render it
+                // When a new todo is added, render it
                 this.listenTo(this.collection, 'add', this.renderTodo, this);
 
                 this.collection.fetch();

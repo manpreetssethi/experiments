@@ -43,6 +43,18 @@ define(
                     should.equal(_error, 'Provide a task title!');
                 })
             });
+
+            describe('Business logic', function () {
+                it('should mark as done', function(){
+                    this.todoModel.markAsDone();
+                    should.equal(this.todoModel.get('completed'), true);
+                })
+
+                it('should mark as pending', function(){
+                    this.todoModel.markAsPending();
+                    should.equal(this.todoModel.get('completed'), false);
+                })
+            });
         });
 
         describe('App Data Model', function() {

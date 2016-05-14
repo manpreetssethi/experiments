@@ -10,3 +10,5 @@ Run the server;
 ```
 node server/api.js
 ```
+
+Tests available in "tests.html"

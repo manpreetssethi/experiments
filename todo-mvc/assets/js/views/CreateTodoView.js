@@ -46,7 +46,7 @@ define(
                 var model = this.collection.create({title: title}, {wait: true});
 
                 if(typeof model === 'object' && !model.isValid()) {
-                    this.showErrorMessage('Provide a title!');
+                    this.showErrorMessage(model.validationError);
                     return this;
                 }
 
