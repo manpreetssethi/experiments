@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import AppBox from './AppBox';
 
 // When document is ready
