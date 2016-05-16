@@ -1,8 +1,4 @@
-/* Portrait */
-@media (max-width: 500px) and (orientation: portrait) {
+/* Mobile specific rules */
+@media (max-width: 500px) {
 
-}
-
-/* Landscape */
-@media (max-height: 500px) and (orientation: landscape) {
 }

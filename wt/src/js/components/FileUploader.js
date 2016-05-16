@@ -116,8 +116,8 @@ class FileUploader extends React.Component {
 				<div className="row">
 					<div className="col-lg-12">
 						<div className="pull-right">
-							<button title="play" onClick={this.startUpload}>&#9658;</button>
-							<button title="pause" onClick={this.stopUpload}>&#9724;</button>
+							<button title="play" onClick={this.startUpload}><span className="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+							<button title="pause" onClick={this.stopUpload}><span className="glyphicon glyphicon-pause" aria-hidden="true"></span></button>
 						</div>
 						<div class="clearfix"></div>
 					</div>
