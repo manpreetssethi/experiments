@@ -23,18 +23,18 @@ class ArcLoader extends React.Component {
 		return (
 			<div className={containerClassNames.join(' ')}>
 				<div className="row">
-					<div className="col-lg-12">
+					<div className="col-lg-12 col-md-12 col-xs-12">
 						<CustomCanvas width={this.props.width} height={this.props.height} arcSpecs={this.props.specs} />
 					</div>
 				</div>
 				<div className="al-progress-label al-label">
 					<div className="row">
-						<div className="col-lg-12">{this.props.percentageCompleted}<span>%</span></div>
+						<div className="col-lg-12 col-md-12 col-xs-12">{this.props.percentageCompleted}<span>%</span></div>
 					</div>
 				</div>
 				<div className="al-completed-label al-label">
 					<div className="row">
-						<div className="col-lg-12">&#10003;</div>
+						<div className="col-lg-12 col-md-12 col-xs-12">&#10003;</div>
 					</div>
 				</div>
 			</div>

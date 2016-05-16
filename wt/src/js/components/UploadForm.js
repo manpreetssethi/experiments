@@ -63,10 +63,10 @@ class UploadForm extends React.Component {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-lg-6 col-md-6 col-xs-6">
 						<p className="ufc-info-label">Press play to emulate a file upload</p>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-lg-6 col-md-6 col-xs-6">
 						<FileUploader
 							onProgress={this.showProgress}
 							onError={this.showError}

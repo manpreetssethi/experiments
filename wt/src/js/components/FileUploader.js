@@ -51,7 +51,7 @@ class FileUploader extends React.Component {
 	 * Invokes callbacks provided in props
 	 */
 	upload() {
-		this.updatePercentage(_.random(0.0005, 0.0010)); // Increment the percentage randomly to simulate network lag
+		this.updatePercentage(0.0005); // Increment the percentage
 		this.invokeCallbacks(this.state.percentage, this.state.percentage); // Invoke callbacks
 	}
 
