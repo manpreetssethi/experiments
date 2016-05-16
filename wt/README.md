@@ -1,6 +1,18 @@
 Build like this;
 
 ```
-bower install
-jsx --watch src/js/ build/js/
+npm install
+gulp
+```
+
+To generate documentation;
+
+```
+esdoc -c ./esdoc.json
+```
+
+To install esdoc;
+
+```
+npm install esdoc -g
 ```

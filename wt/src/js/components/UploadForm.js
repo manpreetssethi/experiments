@@ -10,9 +10,9 @@ class UploadForm extends React.Component {
 			percentageCompleted: 0,
 			completed: false,
 			arcSpecs: {
-				x: 105,
+				x: 95,
 				y: 110,
-				radius: 90,
+				radius: 70,
 				startAngle: 1.5 * Math.PI,
 				endAngle: 1.5 * Math.PI,
 				counterClockwise: false,
@@ -28,16 +28,12 @@ class UploadForm extends React.Component {
 		this.completeUpload = this.completeUpload.bind(this);
 	}
 
-	handleSubmit(e) {
-		e.preventDefault();
-	}
-
 	showProgress(percentage) {
 		// update state
 		this.setState({
 			uploading: true,
 			percentageCompleted: parseInt(percentage*100),
-			arcSpecs: Object.assign(this.state.arcSpecs, {
+			arcSpecs: _.extend(this.state.arcSpecs, {
 				endAngle: mathUtils.arc.percentageToEndAngle(percentage)
 			})
 		})
@@ -54,21 +50,23 @@ class UploadForm extends React.Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<div className="row"></div>
+			<div className="upload-form-container">
 				<div className="row">
 					<div className="col-lg-12">
 						<ArcLoader
 							percentageCompleted={this.state.percentageCompleted}
 							specs={this.state.arcSpecs}
-							width="210"
+							width="200"
 							height="210"
 							completed={this.state.completed}
 							/>
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-12">
+					<div className="col-lg-6">
+						<p className="ufc-info-label">Press play to emulate a file upload</p>
+					</div>
+					<div className="col-lg-6">
 						<FileUploader
 							onProgress={this.showProgress}
 							onError={this.showError}
@@ -76,12 +74,10 @@ class UploadForm extends React.Component {
 							/>
 					</div>
 				</div>
-			</form>
+			</div>
 		);
 	}
 }
-
-export default UploadForm;
 
 var mathUtils = {
 	arc: {
@@ -90,3 +86,5 @@ var mathUtils = {
 		}
 	}
 };
+
+export default UploadForm;

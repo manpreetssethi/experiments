@@ -1,0 +1,1467 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/js/AppBox.js",
+    "memberof": null,
+    "longname": "src/js/AppBox.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\nimport UploadForm from './components/UploadForm';\n\n/**\n * Holds the App, contains all the components\n */\nclass AppBox extends React.Component {\n\t/**\n\t * Renders HTML, uses UploadForm Component\n\t */\n\trender() {\n\t\treturn (\n\t\t\t<div className=\"appBox\">\n\t\t\t\t<UploadForm />\n\t\t\t</div>\n\t\t);\n\t}\n}\n\nexport default AppBox;"
+  },
+  {
+    "__docId__": 1,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "AppBox",
+    "memberof": "src/js/AppBox.js",
+    "longname": "src/js/AppBox.js~AppBox",
+    "access": null,
+    "export": true,
+    "importPath": "wt/src/js/AppBox.js",
+    "importStyle": "AppBox",
+    "description": "Holds the App, contains all the components",
+    "lineNumber": 7,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 2,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/js/AppBox.js~AppBox",
+    "longname": "src/js/AppBox.js~AppBox#render",
+    "access": null,
+    "description": "Renders HTML, uses UploadForm Component",
+    "lineNumber": 11,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 3,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/js/boot.js",
+    "memberof": null,
+    "longname": "src/js/boot.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\nimport ReactDOM from 'react-dom';\nimport AppBox from './AppBox';\n\n// When document is ready\n$(document).ready(() => {\n\t// Render the App\n\tReactDOM.render(<AppBox />, document.getElementById('app'));\n});"
+  },
+  {
+    "__docId__": 4,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/js/components/ArcLoader.js",
+    "memberof": null,
+    "longname": "src/js/components/ArcLoader.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\nimport CustomCanvas from './CustomCanvas';\n\n/**\n * Draws an Arc using Canvas to show feedback to the user\n */\nclass ArcLoader extends React.Component {\n\t/**\n\t * Renders HTML and uses CustomCanvas component\n\t * Can have either a progress or a completed state\n\t * Shows a number in the center indicating the percentage of Arc drawn\n\t */\n\trender() {\n\t\t// Default className of the main container\n\t\tvar containerClassNames = ['arc-loader'];\n\n\t\t// append \"completed\" to the default className\n\t\t// if completed\n\t\tif(this.props.completed) {\n\t\t\tcontainerClassNames.push('completed');\n\t\t}\n\n\t\treturn (\n\t\t\t<div className={containerClassNames.join(' ')}>\n\t\t\t\t<div className=\"row\">\n\t\t\t\t\t<div className=\"col-lg-12\">\n\t\t\t\t\t\t<CustomCanvas width={this.props.width} height={this.props.height} arcSpecs={this.props.specs} />\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div className=\"al-progress-label al-label\">\n\t\t\t\t\t<div className=\"row\">\n\t\t\t\t\t\t<div className=\"col-lg-12\">{this.props.percentageCompleted}<span>%</span></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div className=\"al-completed-label al-label\">\n\t\t\t\t\t<div className=\"row\">\n\t\t\t\t\t\t<div className=\"col-lg-12\">&#10003;</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t);\n\t}\n}\n\nexport default ArcLoader;"
+  },
+  {
+    "__docId__": 5,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "ArcLoader",
+    "memberof": "src/js/components/ArcLoader.js",
+    "longname": "src/js/components/ArcLoader.js~ArcLoader",
+    "access": null,
+    "export": true,
+    "importPath": "wt/src/js/components/ArcLoader.js",
+    "importStyle": "ArcLoader",
+    "description": "Draws an Arc using Canvas to show feedback to the user",
+    "lineNumber": 7,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 6,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/js/components/ArcLoader.js~ArcLoader",
+    "longname": "src/js/components/ArcLoader.js~ArcLoader#render",
+    "access": null,
+    "description": "Renders HTML and uses CustomCanvas component\nCan have either a progress or a completed state\nShows a number in the center indicating the percentage of Arc drawn",
+    "lineNumber": 13,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 7,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/js/components/CustomCanvas.js",
+    "memberof": null,
+    "longname": "src/js/components/CustomCanvas.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\n\n/**\n * Abstracts HTML Canvas container as a React Component\n */\nclass CustomCanvas extends React.Component {\n\t/**\n\t * Paint when component mounts\n\t */\n\tcomponentDidMount() {\n\t\tthis.paint();\n\t}\n\n\t/**\n\t * Paint when component's properties are updated\n\t */\n\tcomponentDidUpdate() {\n\t\tthis.paint();\n\t}\n\n\t/**\n\t * Draws in Canvas based on props\n\t * Will draw an Arc if 'arcSpecs' is provided in props\n\t */\n\tpaint() {\n\t\tif(typeof this.props.arcSpecs !== 'undefined') {\n\t\t\tthis.paintArc(this._canvas.getContext('2d'), this.props.arcSpecs);\n\t\t}\n\t}\n\n\t/**\n\t * Draws an Arc in Canvas\n\t * @param {object} [name=\"context\"] - '2d' context of Canvas\n\t * @param {object} [name=\"specs\"] - Standard specifications to draw an Arc (http://www.w3schools.com/tags/canvas_arc.asp)\n\t */\n\tpaintArc(context, specs) {\n\t\t// Arc\n\t\tcontext.beginPath();\n\t\tcontext.arc(\n\t\t\tspecs.x,\n\t\t\tspecs.y,\n\t\t\tspecs.radius,\n\t\t\tspecs.startAngle,\n\t\t\tspecs.endAngle,\n\t\t\tspecs.counterClockwise\n\t\t);\n\n\t\t// line\n\t\tcontext.lineWidth = specs.lineWidth;\n\t\tcontext.strokeStyle = specs.strokeStyle;context.stroke();\n\t\tcontext.closePath();\n\t}\n\n\t/**\n\t * Renders a native Canvas element\n\t */\n\trender() {\n\t\treturn (<canvas width={this.props.width} height={this.props.height} ref={(c) => this._canvas = c} />);\n\t}\n}\n\nexport default CustomCanvas;\n"
+  },
+  {
+    "__docId__": 8,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "CustomCanvas",
+    "memberof": "src/js/components/CustomCanvas.js",
+    "longname": "src/js/components/CustomCanvas.js~CustomCanvas",
+    "access": null,
+    "export": true,
+    "importPath": "wt/src/js/components/CustomCanvas.js",
+    "importStyle": "CustomCanvas",
+    "description": "Abstracts HTML Canvas container as a React Component",
+    "lineNumber": 6,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 9,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "componentDidMount",
+    "memberof": "src/js/components/CustomCanvas.js~CustomCanvas",
+    "longname": "src/js/components/CustomCanvas.js~CustomCanvas#componentDidMount",
+    "access": null,
+    "description": "Paint when component mounts",
+    "lineNumber": 10,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 10,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "componentDidUpdate",
+    "memberof": "src/js/components/CustomCanvas.js~CustomCanvas",
+    "longname": "src/js/components/CustomCanvas.js~CustomCanvas#componentDidUpdate",
+    "access": null,
+    "description": "Paint when component's properties are updated",
+    "lineNumber": 17,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 11,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "paint",
+    "memberof": "src/js/components/CustomCanvas.js~CustomCanvas",
+    "longname": "src/js/components/CustomCanvas.js~CustomCanvas#paint",
+    "access": null,
+    "description": "Draws in Canvas based on props\nWill draw an Arc if 'arcSpecs' is provided in props",
+    "lineNumber": 25,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 12,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "paintArc",
+    "memberof": "src/js/components/CustomCanvas.js~CustomCanvas",
+    "longname": "src/js/components/CustomCanvas.js~CustomCanvas#paintArc",
+    "access": null,
+    "description": "Draws an Arc in Canvas",
+    "lineNumber": 36,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "\"context\"",
+        "defaultRaw": "context",
+        "name": "name",
+        "description": "'2d' context of Canvas"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "\"specs\"",
+        "defaultRaw": "specs",
+        "name": "name",
+        "description": "Standard specifications to draw an Arc (http://www.w3schools.com/tags/canvas_arc.asp)"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 13,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/js/components/CustomCanvas.js~CustomCanvas",
+    "longname": "src/js/components/CustomCanvas.js~CustomCanvas#render",
+    "access": null,
+    "description": "Renders a native Canvas element",
+    "lineNumber": 57,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 14,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/js/components/FileUploader.js",
+    "memberof": null,
+    "longname": "src/js/components/FileUploader.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\n\n/**\n * Abstracts asynchronous file upload functionality\n */\nclass FileUploader extends React.Component {\n\t/**\n\t * Sets the state & binds member functions with the current context\n\t * @param {Object} props\n\t * @param {function} props.onProgress \t- callback when upload is in progress and there is a change in the state\n\t * @param {function} props.onComplete \t- callback when upload is completed\n\t * @param {function} props.onStop \t\t- callback when upload is stopped manually\n\t */\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tuploading: false,\n\t\t\tpercentage: 0,\n\t\t\tcompleted: false,\n\t\t\tinterval: null\n\t\t}\n\n\t\t// Apparently React with ES6 doesn't bind \"this\" to\n\t\t// custom methods (https://github.com/goatslacker/alt/issues/283)\n\t\tthis.startUpload = this.startUpload.bind(this);\n\t\tthis.stopUpload = this.stopUpload.bind(this);\n\t\tthis.clearInterval = this.clearInterval.bind(this);\n\t}\n\n\t/**\n\t * Starts an interval if not already uploading\n\t * Sets interval to state\n\t * Sets uploading (true) to state\n\t */\n\tstartUpload() {\n\t\t// Already in progress (ignore the clicks)\n\t\tif(this.state.uploading) {\n\t\t\treturn;\n\t\t}\n\n\t\t// Start interval and set uploading to true\n\t\tthis.setState({\n\t\t\tinterval: setInterval(this.upload, 5),\n\t\t\tuploading: true\n\t\t});\n\t}\n\n\t/**\n\t * Updates the percentage of completion\n\t * Invokes callbacks provided in props\n\t */\n\tupload() {\n\t\tthis.updatePercentage(_.random(0.0005, 0.0010)); // Increment the percentage randomly to simulate network lag\n\t\tthis.invokeCallbacks(this.state.percentage, this.state.percentage); // Invoke callbacks\n\t}\n\n\n\tupdatePercentage(by) {\n\t\tthis.state.percentage += by;\n\t}\n\n\tinvokeCallbacks(percentage, payload) {\n\t\t// If defined, invoke the callback required on progress\n\t\tif(typeof this.props.onProgress !== 'undefined') {\n\t\t\tthis.props.onProgress(payload);\n\t\t}\n\n\t\t// Simulation complete, end the animation\n\t\tif(percentage > 1) {\n\t\t\tthis.clearInterval(); // clear the interval\n\n\t\t\t// If defined, invoke the callback required on complete\n\t\t\tif(typeof this.props.onComplete !== 'undefined') {\n\t\t\t\tthis.props.onComplete(null);\n\t\t\t}\n\t\t}\n\t}\n\n\tstopUpload() {\n\t\tthis.clearInterval();\n\n\t\tif(this.props.onStop) {\n\t\t\tthis.props.onStop(null);\n\t\t}\n\t}\n\n\tclearInterval() {\n\t\tclearInterval(this.state.interval);\n\t\tthis.setState({\n\t\t\tinterval: null,\n\t\t\tuploading: false\n\t\t});\n\t}\n\n\trender() {\n\t\treturn (\n\t\t\t<div className=\"file-uploader\">\n\t\t\t\t<div className=\"row\">\n\t\t\t\t\t<div className=\"col-lg-12\">\n\t\t\t\t\t\t<div className=\"pull-right\">\n\t\t\t\t\t\t\t<button title=\"play\" onClick={this.startUpload}>&#9658;</button>\n\t\t\t\t\t\t\t<button title=\"pause\" onClick={this.stopUpload}>&#9724;</button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t);\n\t}\n}\n\nexport default FileUploader;"
+  },
+  {
+    "__docId__": 15,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "FileUploader",
+    "memberof": "src/js/components/FileUploader.js",
+    "longname": "src/js/components/FileUploader.js~FileUploader",
+    "access": null,
+    "export": true,
+    "importPath": "wt/src/js/components/FileUploader.js",
+    "importStyle": "FileUploader",
+    "description": "Abstracts asynchronous file upload functionality",
+    "lineNumber": 6,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 16,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/js/components/FileUploader.js~FileUploader",
+    "longname": "src/js/components/FileUploader.js~FileUploader#constructor",
+    "access": null,
+    "description": "Sets the state & binds member functions with the current context",
+    "lineNumber": 14,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props.onProgress",
+        "description": "callback when upload is in progress and there is a change in the state"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props.onComplete",
+        "description": "callback when upload is completed"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props.onStop",
+        "description": "callback when upload is stopped manually"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 17,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "src/js/components/FileUploader.js~FileUploader",
+    "longname": "src/js/components/FileUploader.js~FileUploader#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 18,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "startUpload",
+    "memberof": "src/js/components/FileUploader.js~FileUploader",
+    "longname": "src/js/components/FileUploader.js~FileUploader#startUpload",
+    "access": null,
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 19,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "stopUpload",
+    "memberof": "src/js/components/FileUploader.js~FileUploader",
+    "longname": "src/js/components/FileUploader.js~FileUploader#stopUpload",
+    "access": null,
+    "description": null,
+    "lineNumber": 26,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 20,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "clearInterval",
+    "memberof": "src/js/components/FileUploader.js~FileUploader",
+    "longname": "src/js/components/FileUploader.js~FileUploader#clearInterval",
+    "access": null,
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 21,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "startUpload",
+    "memberof": "src/js/components/FileUploader.js~FileUploader",
+    "longname": "src/js/components/FileUploader.js~FileUploader#startUpload",
+    "access": null,
+    "description": "Starts an interval if not already uploading\nSets interval to state\nSets uploading (true) to state",
+    "lineNumber": 35,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 22,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "upload",
+    "memberof": "src/js/components/FileUploader.js~FileUploader",
+    "longname": "src/js/components/FileUploader.js~FileUploader#upload",
+    "access": null,
+    "description": "Updates the percentage of completion\nInvokes callbacks provided in props",
+    "lineNumber": 52,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 23,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "updatePercentage",
+    "memberof": "src/js/components/FileUploader.js~FileUploader",
+    "longname": "src/js/components/FileUploader.js~FileUploader#updatePercentage",
+    "access": null,
+    "description": null,
+    "lineNumber": 58,
+    "undocument": true,
+    "params": [
+      {
+        "name": "by",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 24,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "invokeCallbacks",
+    "memberof": "src/js/components/FileUploader.js~FileUploader",
+    "longname": "src/js/components/FileUploader.js~FileUploader#invokeCallbacks",
+    "access": null,
+    "description": null,
+    "lineNumber": 62,
+    "undocument": true,
+    "params": [
+      {
+        "name": "percentage",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "payload",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 25,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "stopUpload",
+    "memberof": "src/js/components/FileUploader.js~FileUploader",
+    "longname": "src/js/components/FileUploader.js~FileUploader#stopUpload",
+    "access": null,
+    "description": null,
+    "lineNumber": 79,
+    "undocument": true,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 26,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "clearInterval",
+    "memberof": "src/js/components/FileUploader.js~FileUploader",
+    "longname": "src/js/components/FileUploader.js~FileUploader#clearInterval",
+    "access": null,
+    "description": null,
+    "lineNumber": 87,
+    "undocument": true,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 27,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/js/components/FileUploader.js~FileUploader",
+    "longname": "src/js/components/FileUploader.js~FileUploader#render",
+    "access": null,
+    "description": null,
+    "lineNumber": 95,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 28,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/js/components/UploadForm.js",
+    "memberof": null,
+    "longname": "src/js/components/UploadForm.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\nimport ArcLoader from './ArcLoader';\nimport FileUploader from './FileUploader';\n\nclass UploadForm extends React.Component {\n\tconstructor(props) {\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tuploading: false,\n\t\t\tpercentageCompleted: 0,\n\t\t\tcompleted: false,\n\t\t\tarcSpecs: {\n\t\t\t\tx: 95,\n\t\t\t\ty: 110,\n\t\t\t\tradius: 70,\n\t\t\t\tstartAngle: 1.5 * Math.PI,\n\t\t\t\tendAngle: 1.5 * Math.PI,\n\t\t\t\tcounterClockwise: false,\n\t\t\t\tlineWidth: 5,\n\t\t\t\tstrokeStyle: '#e1e1e1'\n\t\t\t}\n\t\t}\n\n\n\t\t// Apparently React with ES6 doesn't bind \"this\" to\n\t\t// custom methods (https://github.com/goatslacker/alt/issues/283)\n\t\tthis.showProgress = this.showProgress.bind(this);\n\t\tthis.completeUpload = this.completeUpload.bind(this);\n\t}\n\n\tshowProgress(percentage) {\n\t\t// update state\n\t\tthis.setState({\n\t\t\tuploading: true,\n\t\t\tpercentageCompleted: parseInt(percentage*100),\n\t\t\tarcSpecs: _.extend(this.state.arcSpecs, {\n\t\t\t\tendAngle: mathUtils.arc.percentageToEndAngle(percentage)\n\t\t\t})\n\t\t})\n\t}\n\n\tcompleteUpload(filename) {\n\t\tthis.setState({\n\t\t\tcompleted: true,\n\t\t\tuploading: false\n\t\t})\n\t}\n\n\tshowError(filename) {}\n\n\trender() {\n\t\treturn (\n\t\t\t<div className=\"upload-form-container\">\n\t\t\t\t<div className=\"row\">\n\t\t\t\t\t<div className=\"col-lg-12\">\n\t\t\t\t\t\t<ArcLoader\n\t\t\t\t\t\t\tpercentageCompleted={this.state.percentageCompleted}\n\t\t\t\t\t\t\tspecs={this.state.arcSpecs}\n\t\t\t\t\t\t\twidth=\"200\"\n\t\t\t\t\t\t\theight=\"210\"\n\t\t\t\t\t\t\tcompleted={this.state.completed}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div className=\"row\">\n\t\t\t\t\t<div className=\"col-lg-6\">\n\t\t\t\t\t\t<p className=\"ufc-info-label\">Press play to emulate a file upload</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div className=\"col-lg-6\">\n\t\t\t\t\t\t<FileUploader\n\t\t\t\t\t\t\tonProgress={this.showProgress}\n\t\t\t\t\t\t\tonError={this.showError}\n\t\t\t\t\t\t\tonComplete={this.completeUpload}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t);\n\t}\n}\n\nvar mathUtils = {\n\tarc: {\n\t\tpercentageToEndAngle: (percentage) => {\n\t\t\treturn 2 * Math.PI * percentage - (Math.PI / 2);\n\t\t}\n\t}\n};\n\nexport default UploadForm;"
+  },
+  {
+    "__docId__": 29,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "mathUtils",
+    "memberof": "src/js/components/UploadForm.js",
+    "longname": "src/js/components/UploadForm.js~mathUtils",
+    "access": null,
+    "export": false,
+    "importPath": "wt/src/js/components/UploadForm.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 82,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 30,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "UploadForm",
+    "memberof": "src/js/components/UploadForm.js",
+    "longname": "src/js/components/UploadForm.js~UploadForm",
+    "access": null,
+    "export": true,
+    "importPath": "wt/src/js/components/UploadForm.js",
+    "importStyle": "UploadForm",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 31,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/js/components/UploadForm.js~UploadForm",
+    "longname": "src/js/components/UploadForm.js~UploadForm#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 32,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "src/js/components/UploadForm.js~UploadForm",
+    "longname": "src/js/components/UploadForm.js~UploadForm#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 33,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "showProgress",
+    "memberof": "src/js/components/UploadForm.js~UploadForm",
+    "longname": "src/js/components/UploadForm.js~UploadForm#showProgress",
+    "access": null,
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 34,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "completeUpload",
+    "memberof": "src/js/components/UploadForm.js~UploadForm",
+    "longname": "src/js/components/UploadForm.js~UploadForm#completeUpload",
+    "access": null,
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 35,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "showProgress",
+    "memberof": "src/js/components/UploadForm.js~UploadForm",
+    "longname": "src/js/components/UploadForm.js~UploadForm#showProgress",
+    "access": null,
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "params": [
+      {
+        "name": "percentage",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 36,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "completeUpload",
+    "memberof": "src/js/components/UploadForm.js~UploadForm",
+    "longname": "src/js/components/UploadForm.js~UploadForm#completeUpload",
+    "access": null,
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true,
+    "params": [
+      {
+        "name": "filename",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 37,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "showError",
+    "memberof": "src/js/components/UploadForm.js~UploadForm",
+    "longname": "src/js/components/UploadForm.js~UploadForm#showError",
+    "access": null,
+    "description": null,
+    "lineNumber": 49,
+    "undocument": true,
+    "params": [
+      {
+        "name": "filename",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 38,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/js/components/UploadForm.js~UploadForm",
+    "longname": "src/js/components/UploadForm.js~UploadForm#render",
+    "access": null,
+    "description": null,
+    "lineNumber": 51,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 49,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 55,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 59,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 81,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 88,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 89,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 90,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 91,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 94,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 95,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  }
+]

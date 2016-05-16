@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">src/js/components/FileUploader.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">js</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/AppBox.js~AppBox.html">AppBox</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">js/components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/ArcLoader.js~ArcLoader.html">ArcLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/CustomCanvas.js~CustomCanvas.html">CustomCanvas</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/FileUploader.js~FileUploader.html">FileUploader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/UploadForm.js~UploadForm.html">UploadForm</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/js/components/FileUploader.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
+
+/**
+ * Abstracts asynchronous file upload functionality
+ */
+class FileUploader extends React.Component {
+	/**
+	 * Sets the state &amp; binds member functions with the current context
+	 * @param {Object} props
+	 * @param {function} props.onProgress 	- callback when upload is in progress and there is a change in the state
+	 * @param {function} props.onComplete 	- callback when upload is completed
+	 * @param {function} props.onStop 		- callback when upload is stopped manually
+	 */
+	constructor(props) {
+		super(props);
+		this.state = {
+			uploading: false,
+			percentage: 0,
+			completed: false,
+			interval: null
+		}
+
+		// Apparently React with ES6 doesn&apos;t bind &quot;this&quot; to
+		// custom methods (https://github.com/goatslacker/alt/issues/283)
+		this.startUpload = this.startUpload.bind(this);
+		this.stopUpload = this.stopUpload.bind(this);
+		this.clearInterval = this.clearInterval.bind(this);
+	}
+
+	/**
+	 * Starts an interval if not already uploading
+	 * Sets interval to state
+	 * Sets uploading (true) to state
+	 */
+	startUpload() {
+		// Already in progress (ignore the clicks)
+		if(this.state.uploading) {
+			return;
+		}
+
+		// Start interval and set uploading to true
+		this.setState({
+			interval: setInterval(this.upload, 5),
+			uploading: true
+		});
+	}
+
+	/**
+	 * Updates the percentage of completion
+	 * Invokes callbacks provided in props
+	 */
+	upload() {
+		this.updatePercentage(_.random(0.0005, 0.0010)); // Increment the percentage randomly to simulate network lag
+		this.invokeCallbacks(this.state.percentage, this.state.percentage); // Invoke callbacks
+	}
+
+
+	updatePercentage(by) {
+		this.state.percentage += by;
+	}
+
+	invokeCallbacks(percentage, payload) {
+		// If defined, invoke the callback required on progress
+		if(typeof this.props.onProgress !== &apos;undefined&apos;) {
+			this.props.onProgress(payload);
+		}
+
+		// Simulation complete, end the animation
+		if(percentage &gt; 1) {
+			this.clearInterval(); // clear the interval
+
+			// If defined, invoke the callback required on complete
+			if(typeof this.props.onComplete !== &apos;undefined&apos;) {
+				this.props.onComplete(null);
+			}
+		}
+	}
+
+	stopUpload() {
+		this.clearInterval();
+
+		if(this.props.onStop) {
+			this.props.onStop(null);
+		}
+	}
+
+	clearInterval() {
+		clearInterval(this.state.interval);
+		this.setState({
+			interval: null,
+			uploading: false
+		});
+	}
+
+	render() {
+		return (
+			&lt;div className=&quot;file-uploader&quot;&gt;
+				&lt;div className=&quot;row&quot;&gt;
+					&lt;div className=&quot;col-lg-12&quot;&gt;
+						&lt;div className=&quot;pull-right&quot;&gt;
+							&lt;button title=&quot;play&quot; onClick={this.startUpload}&gt;&amp;#9658;&lt;/button&gt;
+							&lt;button title=&quot;pause&quot; onClick={this.stopUpload}&gt;&amp;#9724;&lt;/button&gt;
+						&lt;/div&gt;
+						&lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		);
+	}
+}
+
+export default FileUploader;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.7)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
