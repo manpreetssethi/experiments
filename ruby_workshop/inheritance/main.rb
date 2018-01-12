@@ -10,4 +10,8 @@ require_relative 'tree.rb'
 
 bush = Bush.new('Calluna')
 grass = Grass.new
-tree = Tree.new('Larix decidua', 'Larch', false)
+tree = Tree.new('Larix decidua', 'Larch', has_flowers: false)
+
+puts bush
+puts grass
+puts tree

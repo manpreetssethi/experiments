@@ -1,7 +1,7 @@
 class Species
-  attr_accessor :species_name
+  attr_accessor :name
 
   def initialize(species_name)
-    @species_name = species_name
+    @name = species_name
   end
 end
