@@ -1,4 +1,9 @@
 <%= form_for @contact do |f| %>
+    <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+   </ul>
 
     <%= f.label :name %>
     <%= f.text_field :name %>
