@@ -1,0 +1,14 @@
+<form method="GET" action"/contacts/search">
+    <input type="text" name="q" value="<%= @q %>" />
+    <input type="submit" value="search" />
+</form>
+<br />
+
+<h2>Contacts</h2>
+
+<% @renderable_contacts.each_with_index do |contact, i| %>
+    <h3><a href="/contacts/<%= i %>"><%= contact[:name] %></a></h3>
+<% end %>
+
+<br>
+<a href="/contacts/new">[New]</a>

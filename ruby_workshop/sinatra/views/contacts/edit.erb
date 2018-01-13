@@ -1,0 +1,9 @@
+<h2>Edit Contact</h2>
+
+<form action="/contacts/<%= @i %>/update" method="POST">
+  <p>Name: <input type="text" name="name" value="<%= @contact[:name] %>"></p>
+  <p>Phone: <input type="text" name="phone" value="<%= @contact[:phone] %>"></p>
+  <p>Email: <input type="text" name="email" value="<%= @contact[:email] %>"></p>
+  <input type="submit" value="Update">
+  <button><a href="/contacts/<%= @i %>">Cancel</a></button>
+</form>
