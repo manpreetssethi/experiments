@@ -1,0 +1,14 @@
+<%= form_for @contact do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :phone %>
+    <%= f.text_field :phone, size: 15 %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email, size: 20 %>
+
+    <%= f.submit (@contact.new_record? ? "Create" : "Update") %>
+
+<% end %>

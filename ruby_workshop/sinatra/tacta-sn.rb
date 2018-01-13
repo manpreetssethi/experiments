@@ -21,8 +21,6 @@ get '/contacts' do
     @renderable_contacts = @contacts
   end
 
-  puts @contacts
-
   erb :'contacts/index'
 end
 
