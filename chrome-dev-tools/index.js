@@ -30,6 +30,7 @@ const handleAddText = (e) => {
 };
 
 const addHeading = (text) => {
+  console.count(text);
   const heading = document.createElement('h1');
   heading.innerHTML = text;
   heading.style.color = defaultHeadingColor;
@@ -42,7 +43,7 @@ const addHeading = (text) => {
 const handleDeleteText = (e) => {
   e.preventDefault();
   const q = document.querySelector('input[name="q"]').value;
-  const headings = [].slice.call(document.querySelectorAll('h1')); 
+  const headings = [].slice.call(document.querySelectorAll('h1'));
   const heading = headings.find(element => element.innerHTML == q);
   if (heading) {
     removeHeading(heading);
