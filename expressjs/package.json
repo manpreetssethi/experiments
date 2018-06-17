@@ -1,0 +1,18 @@
+{
+  "name": "expressjs",
+  "version": "1.0.0",
+  "description": "A playground for quick api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Manpreet Sethi",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "exif-parser": "^0.1.12",
+    "express": "^4.16.3",
+    "mongodb": "^3.0.10",
+    "multer": "^1.3.0"
+  }
+}
